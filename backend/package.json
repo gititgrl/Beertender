@@ -5,7 +5,6 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-    
   },
   "keywords": [],
   "author": "",
@@ -17,6 +16,8 @@
     "express": "^4.18.2",
     "jwt-simple": "^0.5.6",
     "method-override": "^3.0.0",
-    "mongoose": "^6.8.3"
-  }
+    "mongoose": "^6.8.3",
+    "node": "^19.3.0"
+  },
+  "proxy": "https://localhost:8000"
 }

@@ -1,10 +1,12 @@
 //import packages
 import { Routes, Route } from 'react-router-dom';
+import React, { useState, useEffect } from "react"
+import axios from "axios";
 
 //import pages
 import SignUp from "./pages/SignUp";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
+import Login from "./pages/Login/Login";
+import Home from "./pages/Home/Home";
 import User from "./pages/User";
 import Favorites from "./pages/Favorites";
 import BreweryList from "./pages/BreweryList";
@@ -13,7 +15,8 @@ import BreweryShow from "./pages/BreweryShow";
 //import components
 import Nav from "./components/Nav";
 
-import axios from "axios";
+
+
 
 const options = {
   method: 'GET',
@@ -31,13 +34,50 @@ axios.request(options).then(function (response) {
 });
 
 function App() {
+  const [name, setName] = useState("")
+  const [isLoggedIn, setLogInStatus] = useState(false);
+	const [user, setUser] = useState([]);
+  async function postName(e) {
+    e.preventDefault()
+
+    try {
+      await axios.post("http://localhost:4000/post_name", {
+        name
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
   return (
     <div>
       <Nav />
       <Routes>
         <Route path ='/' element={<Home/>}/>
+        <Route
+					path='/signup'
+					element={
+						<SignUp 
+            isLoggedIn={isLoggedIn} 
+            setLogInStatus={setLogInStatus} 
+            setUser={setUser}/>
+					}
+				/>
+        <Route
+					path='/login'
+					element={
+						<Login
+							isLoggedIn={isLoggedIn}
+							setLogInStatus={setLogInStatus}
+							setUser={setUser}
+							user={user}
+						/>
+					}
+				/>
       </Routes>
-        
+      <form onSubmit={postName}>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <button type="submit">Send Name to Backend</button>
+      </form>
     </div>
   );
 }

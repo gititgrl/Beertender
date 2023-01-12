@@ -5,7 +5,8 @@ const cors = require('cors')
 const path = require('path');
 require('./models')
 require('dotenv').config()
-const PORT = process.env.PORT
+
+const PORT = 4000
 
 //access controllers
 const userCtrl = require('./controllers/users')
@@ -23,9 +24,18 @@ app.use(express.json())
 app.use('/user', userCtrl)
 app.use('/favorite', favCtrl)
 // any other route not matching the routes above gets routed by React
-app.get("*", (req, res) => {
-    res.sendFile(path.join(path.dirname(__dirname), "frontend", "build", "index.html"));
-});
+// app.get("*", (req, res) => {
+//     res.sendFile(path.join(path.dirname(__dirname), "public", "index.html"));
+// });
 
 app.listen(PORT, () => {
+    console.log(`server listening on port 4000`)
+})
+
+app.get('/', cors(), async (req,res) => {
+    res.send("THIS IS WORKING")
+})
+app.post("/post_name", async (req, res) => {
+    let {name} = req.body
+    console.log(name)
 })
