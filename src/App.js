@@ -1,3 +1,6 @@
+//import packages
+import { Routes, Route } from 'react-router-dom';
+
 //import pages
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -29,13 +32,12 @@ axios.request(options).then(function (response) {
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
+    <div>
+      <Nav />
+      <Routes>
+        <Route path ='/' element={<Home/>}/>
+      </Routes>
         
-      </header>
     </div>
   );
 }
