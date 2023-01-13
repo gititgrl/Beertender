@@ -2,11 +2,11 @@
 import { Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect } from "react"
 import axios from "axios";
+import { EmojioneV4 } from "react-emoji-render";
 
 //import pages
-import SignUp from "./pages/SignUp";
+import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
-import Home from "./pages/Home/Home";
 import User from "./pages/User";
 import Favorites from "./pages/Favorites";
 import BreweryList from "./pages/BreweryList";
@@ -15,53 +15,83 @@ import BreweryShow from "./pages/BreweryShow";
 //import components
 import Nav from "./components/Nav";
 
-
-
-
-const options = {
-  method: 'GET',
-  url: 'https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries/5494',
-  headers: {
-    'X-RapidAPI-Key': 'aad7ca59b2msh7a1b2b40cd9afd8p1883f0jsn55593d1f8392',
-    'X-RapidAPI-Host': 'brianiswu-open-brewery-db-v1.p.rapidapi.com'
-  }
-};
-
-axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
-
 function App() {
   const [name, setName] = useState("")
   const [isLoggedIn, setLogInStatus] = useState(false);
 	const [user, setUser] = useState([]);
-  async function postName(e) {
-    e.preventDefault()
+  const [loading, setLoading] = useState(false); // Is the data loading?
+  const [input, setInput] = useState(""); // User input for brewery query
+  const [breweries, setBreweries] = useState([]); // Array of breweries that will be set after fetching
+  const [emptyResult, setEmptyResult] = useState(false); // Is the fetch result empty?
+  
+  const getBreweries = () => {
+    fetch(`https://api.openbrewerydb.org/breweries/search?query=${input}`)
+        .then((response) => response.json())
+        .then((data) => {
+            setLoading(true);
+            setTimeout(function () {
+                // If the response of the data array is empty
+                if (data.length < 1) {
+                    setEmptyResult(true); // NO results for the query
+                }
+                setBreweries(data); // Set the breweries array from the response
+                setLoading(false); // Set the loading state back to false
+            }, 500);
+        })
+        .catch((error) => {
+            console.error(error.message);
+            alert("There was an error fetching the data");
+        });
+};
 
-    try {
-      await axios.post("http://localhost:4000/post_name", {
-        name
-      })
-    } catch (error) {
-      console.log(error)
+const handleClearingResults = () => {
+  setBreweries([]);
+  setEmptyResult(false);
+  setInput("");
+};
+
+const breweriesArr = breweries
+.sort(function (a, b) {
+    if (a.name < b.name) {
+        return -1;
     }
-  }
+    if (a.name > b.name) {
+        return 1;
+    }
+    return 0;
+})
+.map((brewery) => (
+    <>
+        <li
+            className='list-item'
+            key={brewery.id}
+            data-toggle='modal'
+            data-target={"#detailsModal_" + brewery.id}
+        >
+            <div className='list-item-title'>
+                <h3>{brewery.name}</h3>
+            </div>
+            <div className='list-item-title'>
+                <p className='lead'>
+                    {brewery.city + ", " + brewery.state}
+                </p>
+            </div>
+        </li>
+        {/* Show more details about the brewery (address, number, website) */}
+        {/* <Details brewery={brewery} /> */}
+    </>
+));
   return (
     <div>
       <Nav />
       <Routes>
-        <Route path ='/' element={<Home/>}/>
-        <Route
-					path='/signup'
-					element={
+        <Route path ='/' element={
 						<SignUp 
             isLoggedIn={isLoggedIn} 
             setLogInStatus={setLogInStatus} 
             setUser={setUser}/>
-					}
-				/>
+					}/>
+        
         <Route
 					path='/login'
 					element={
@@ -73,11 +103,12 @@ function App() {
 						/>
 					}
 				/>
+      <Route
+        path='/breweries'
+        element={<BreweryList />}
+      />
       </Routes>
-      <form onSubmit={postName}>
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-        <button type="submit">Send Name to Backend</button>
-      </form>
+      
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import { useState} from 'react';
-import { signUp } from '../utils/api';
+import { signUp } from '../../utils/api';
 import { useNavigate } from 'react-router-dom';
 
+import './signup.css'
 export default function SignUp(props) {
 	const initialState = { username: '', password: '' };
 	const [formState, setFormState] = useState(initialState);
@@ -21,9 +22,9 @@ export default function SignUp(props) {
 		};
 
 		return (
-			<div className='w-full max-w-xs'>
-				<div className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
-					<h1>Sign Up</h1>
+			<div className='flex items-center justify-center h-screen'>
+				<div className='bg-blue-200 shadow-md rounded px-20 pt-6 pb-8 mb-4'>
+					<h1 className="block text-gray-700 text-lg font-bold mb-2">Sign Up</h1>
 					<form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'"onSubmit={handleSubmit}>
 						<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor='username'>
 							<p>Username</p>

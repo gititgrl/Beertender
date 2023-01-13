@@ -2,6 +2,15 @@
 import axios from "axios"
 
 
+//API Request
+export async function getEndpoints() {
+  const { data } = await axios.get("https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries/")
+  return data
+}
+export async function getABrewery(endpoint) {
+  const { data } = await axios.get(endpoint)
+  return data
+}
 // sign up function
 export async function signUp(formData) {
     const { data } = await axios.post(
