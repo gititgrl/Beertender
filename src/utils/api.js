@@ -13,17 +13,17 @@ export async function getABrewery(endpoint) {
 }
 // sign up function
 export async function signUp(formData) {
-    const { data } = await axios.post(
-      "user/signup",
-      formData
-    );
+    const { data } = await axios.post(`http://localhost:4000/users/${formData.endpoint}`, {
+        username: formData.username,
+        password: formData.password
+      });
     return data;
   }
   
   //Log in to User Account
   export async function loginToAccount(formData) {
     const { data } = await axios.post(
-      "user/login",
+      "users/login",
       formData
     );
     return data;
@@ -37,7 +37,7 @@ export async function updateUser(userId, formData) {
       },
     };
     const { data } = await axios.put(
-      `user/${userId}`,
+      `users/${userId}`,
       formData,
       config
     );
@@ -51,12 +51,12 @@ export async function updateUser(userId, formData) {
         Authorization: localStorage.getItem("token"),
       },
     };
-    await axios.delete(`user/${userId}`, config);
+    await axios.delete(`users/${userId}`, config);
   }
   
 //getUser
   export async function getUser(userid) {
-    const { data } = await axios.get(`user/${userid}`);
+    const { data } = await axios.get(`users/${userid}`);
     return data;
 }
 

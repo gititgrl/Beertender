@@ -6,7 +6,6 @@ const config = require('../config/config')
 
 
 function isAuthenticated(req, res, next){
-    
     if(req.headers.authorization){
         next()
     } else {
@@ -36,12 +35,12 @@ router.post('/login', async (req, res) => {
     if(req.body.password === foundUser.password){
         const payload = {id: foundUser._id}
         const token = jwt.encode(payload, config.jwtSecret)
-        const userComment = await db.Comment.find({ user: foundUser._id })
+        const userFavorite = await db.Favorite.find({ user: foundUser._id })
         res.json({
             user: foundUser,
             token: token,
-            comment: userComment
-        })
+            favorite: userFavorite
+                    })
     } else {
         res.sendStatus(401)
     }

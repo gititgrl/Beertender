@@ -24,11 +24,11 @@ export default function LogIn(props) {
     }
 
     return (
-			<div className='w-full max-w-xs' style={{ width: '20rem' }}>
-				<div className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
-					<h1>Login</h1>
-					<form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={handleSubmit}>
-						<label htmlFor='username' className="block text-gray-700 text-sm font-bold mb-2">
+			<div className='flex items-center justify-center h-screen'>
+				<div className='bg-blue-200 shadow-md rounded px-20 pt-6 pb-8 mb-4'>
+					<h1 className="block text-gray-700 text-lg font-bold mb-2">Login</h1>
+					<form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'"onSubmit={handleSubmit}>
+						<label className="block text-gray-700 text-sm font-bold mb-2" htmlFor='username'>
 							Username:{' '}
 						</label>
 						<input
@@ -48,6 +48,7 @@ export default function LogIn(props) {
 							onChange={handleChange}
 							defaultValue={formState.password}
 						/>
+						
 						<button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline' type='submit'>
 							Login
 						</button>

@@ -21,8 +21,8 @@ app.use(cors())
 app.use(express.urlencoded({extended: true }))
 app.use(express.json())
 //routes
-app.use('/user', userCtrl)
-app.use('/favorite', favCtrl)
+app.use('/users', userCtrl)
+app.use('/favorites', favCtrl)
 // any other route not matching the routes above gets routed by React
 // app.get("*", (req, res) => {
 //     res.sendFile(path.join(path.dirname(__dirname), "public", "index.html"));

@@ -11,12 +11,13 @@ export default function SignUp(props) {
 	const handleChange = (event) => {
 		setFormState({ ...formState, [event.target.name]: event.target.value })};
 		
-		function handleSubmit(event) {
+		function handleSubmit(event, formData) {
 			event.preventDefault();
-			signUp(formState).then((data) => {
-				localStorage.token = data.token;
-				localStorage.user_Id = data.user._id;
-				props.setUser(data.user);
+			signUp(formData)
+				.then((data) => {
+					localStorage.token = data.token;
+					localStorage.user_Id = data.user._id;
+					props.setUser(data.user);
 			});
 			navigate('/login')
 		};

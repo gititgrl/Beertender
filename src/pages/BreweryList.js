@@ -66,65 +66,88 @@ export default function BreweryList(props){
 
 return (
     <div>
-<div className='search-bar-container'>
-                    <div className='input-group mb-0'>
-                        <input
-                            type='text'
-                            value={input}
-                            placeholder='Search breweries...'
-                            aria-label='Search'
-                            className='form-control
-                            block
-                            w-full
-                            px-3
-                            py-1.5
-                            text-base
-                            font-normal
-                            text-gray-700
-                            bg-white bg-clip-padding
-                            border border-solid border-gray-300
-                            rounded
-                            transition
-                            ease-in-out
-                            m-0'
-                            // focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-                            onChange={(e) => setInput(e.target.value)}
-                        />
-                        <button
-                            className='bg-white hover:bg-green-300 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow'
-                            type='button'
-                            id='button-addon1'
-                            data-ripple-color='dark'
-                            onClick={getBreweries}
-                        >
-                            Search
-                        </button>
-                        <button
-                            className='bg-white hover:bg-red-500 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow'
-                            type='button'
-                            id='button-addon2'
-                            data-ripple-color='dark'
-                            onClick={handleClearingResults}
-                        >
-                            Clear
-                        </button>
-                    </div>
-                </div>
-                <div className='results-container'>
-                    {/* While the data is loading */}
-                    {loading && (
-                        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
-                        <span class="visually-hidden">Loading...</span>
-                      </div>
-                    
-                    )}
-                    {/* If there are results for the search query */}
-                    <ul className='list'>{breweries && breweriesArr}</ul>
-                    {/* If there are no results for the search query  */}
-                    {emptyResult === true && (
-                        <p className='lead text-center'>NO RESULTS</p>
-                    )}
-                </div>
+        <div className='search-bar-container'>
+            <div className='input-group mb-0'>
+                <input
+                    type='text'
+                    value={input}
+                    placeholder='Search breweries...'
+                    aria-label='Search'
+                    className=
+                        'form-control
+                        block
+                        w-full
+                        px-3
+                        py-1.5
+                        text-base
+                       font-normal
+                        text-gray-700
+                        bg-white bg-clip-padding
+                        border border-solid border-gray-300
+                        rounded
+                        transition
+                        ease-in-out
+                        m-0'
+                        // focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+                    onChange={(e) => setInput(e.target.value)}
+                    />
+                    <button
+                        className='bg-white 
+                        hover:bg-green-300 
+                        text-gray-800 
+                        font-semibold 
+                        py-2 
+                        px-4 
+                        border border-gray-400 
+                        rounded shadow'
+                        type='button'
+                        id='button-addon1'
+                        data-ripple-color='dark'
+                        onClick={getBreweries}
+                    >
+                    Search
+                    </button>
+                    <button
+                        className='bg-white 
+                        hover:bg-red-500 
+                        text-gray-800 
+                        font-semibold 
+                        py-2 
+                        px-4 
+                        border border-gray-400 
+                        rounded shadow'
+                        type='button'
+                        id='button-addon2'
+                        data-ripple-color='dark'
+                        onClick={handleClearingResults}
+                    >
+                    Clear
+                    </button>
             </div>
-    )
+        </div>
+            <div className='results-container'>
+                {/* While the data is loading */}
+                {loading && (
+                    <div class="spinner-border 
+                    animate-spin 
+                    inline-block 
+                    w-8 
+                    h-8 
+                    border-4 
+                    rounded-full" 
+                    role="status"
+                    >
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    
+                )}
+                {/* If there are results for the search query */}
+                <ul className='list'>{breweries && breweriesArr}</ul>
+                {/* If there are no results for the search query  */}
+                {emptyResult === true && (
+                    <p className='lead text-center'>NO RESULTS</p>
+                )}
+            </div>
+    </div>
+)
 }
