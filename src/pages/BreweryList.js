@@ -113,9 +113,10 @@ return (
                 <div className='results-container'>
                     {/* While the data is loading */}
                     {loading && (
-                        <div className='spinner-border' role='status'>
-                            <span className='sr-only'>Loading...</span>
-                        </div>
+                        <div class="spinner-border animate-spin inline-block w-8 h-8 border-4 rounded-full" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    
                     )}
                     {/* If there are results for the search query */}
                     <ul className='list'>{breweries && breweriesArr}</ul>
