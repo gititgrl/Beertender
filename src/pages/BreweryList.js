@@ -74,11 +74,7 @@ return (
                     placeholder='Search breweries...'
                     aria-label='Search'
                     className=
-                        'form-control
-                        block
-                        w-full
-                        px-3
-                        py-1.5
+                        'form-control block w-full px-3 py-1.5
                         text-base
                        font-normal
                         text-gray-700
@@ -89,8 +85,7 @@ return (
                         ease-in-out
                         m-0'
                         // focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
-                    onChange={(e) => setInput(e.target.value)}
-                    />
+                    onChange={(e) => setInput(e.target.value)}/>
                     <button
                         className='bg-white 
                         hover:bg-green-300 
@@ -125,20 +120,12 @@ return (
                     </button>
             </div>
         </div>
-            <div className='results-container'>
+            <div className='flex items-center justify-center space-x-2'>
                 {/* While the data is loading */}
                 {loading && (
-                    <div class="spinner-border 
-                    animate-spin 
-                    inline-block 
-                    w-8 
-                    h-8 
-                    border-4 
-                    rounded-full" 
-                    role="status"
-                    >
-                        <span class="visually-hidden">Loading...</span>
-                    </div>
+                <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-blue-300" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
                     
                 )}
                 {/* If there are results for the search query */}
