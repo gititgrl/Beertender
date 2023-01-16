@@ -2,7 +2,7 @@
 import { Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect } from "react"
 import axios from "axios";
-import { EmojioneV4 } from "react-emoji-render";
+import './global_styles/style.css'
 
 //import pages
 import SignUp from "./pages/SignUp/SignUp";
@@ -14,6 +14,7 @@ import BreweryShow from "./pages/BreweryShow";
 
 //import components
 import Nav from "./components/Nav";
+import Main from "./components/Main"
 
 function App() {
   const [name, setName] = useState("")
@@ -84,6 +85,7 @@ const breweriesArr = breweries
   return (
     <div>
       <Nav />
+      <Main />
       <Routes>
         <Route path ='/signup' element={
 						<SignUp 

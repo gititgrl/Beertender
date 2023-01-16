@@ -13,10 +13,11 @@ export async function getABrewery(endpoint) {
 }
 // sign up function
 export async function signUp(formData) {
-    const { data } = await axios.post(`http://localhost:4000/users/${formData.endpoint}`, {
-        username: formData.username,
-        password: formData.password
-      });
+    const { data } = await axios.post(
+      "users/signup",
+      formData
+    );
+       
     return data;
   }
   

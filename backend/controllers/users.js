@@ -3,7 +3,7 @@ const router = express.Router()
 const db = require('../models')
 const jwt = require('jwt-simple')
 const config = require('../config/config')
-
+const User = db.User
 
 function isAuthenticated(req, res, next){
     if(req.headers.authorization){
@@ -14,20 +14,50 @@ function isAuthenticated(req, res, next){
 
 }
 //signup create route
-router.post('/signup', async (req, res) => {
-    const foundUser = await db.User.findOne({ username: req.body.username})
-    if(!foundUser){
-        const createdUser = await db.User.create(req.body)
-        const payload = {id: createdUser._id}
-        const token = jwt.encode(payload, config.jwtSecret)
-        res.json({
-            user: createdUser,
-            token: token
+router.post('/signup', (req, res) => {
+    if (req.body.username && req.body.password) {
+        let newUser = {
+            username: req.body.username,
+            password: req.body.password
+        }
+        db.User.findOne({ username: req.body.username })
+        .then((user) => {
+            if (!user) {
+                User.create(newUser)
+                    .then (user => {
+                        if (user) {
+                            const payload = {
+                                id: newUser.id
+                            }
+                            const token = jwt.encode(payload, config.jwtSecret)
+                            res.json({
+                                token: token
+                            })
+                        } else {
+                            res.sendStatus(401)
+                        }
+                    })
+            } else {
+                res.sendStatus(401)
+            } 
         })
-    } else {
-        res.sendStatus(401)
-    }
+} else {
+    res.sendStatus(401)
+}
 })
+    // const foundUser = await db.User.findOne({ username: req.body.username})
+    // if(!foundUser){
+    //     const createdUser = await db.User.create(req.body)
+    //     const payload = {id: createdUser._id}
+    //     const token = jwt.encode(payload, config.jwtSecret)
+    //     res.json({
+    //         user: createdUser,
+    //         token: token
+    //     })
+    // } else {
+    //     res.sendStatus(401)
+    // }
+
 
 //login route
 router.post('/login', async (req, res) => {

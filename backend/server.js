@@ -35,7 +35,3 @@ app.listen(PORT, () => {
 app.get('/', cors(), async (req,res) => {
     res.send("THIS IS WORKING")
 })
-app.post("/post_name", async (req, res) => {
-    let {name} = req.body
-    console.log(name)
-})

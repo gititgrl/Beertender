@@ -11,7 +11,7 @@ export default function Nav(props) {
 	const initialState = [
 		<div className='nav-item' key='1'>
 			<Link to='/'>
-            <div className="container flex flex-wrap items-center justify-between mx-auto">
+            <div className="container flex flex-wrap items-center justify-between mx-auto fixed w-full">
                 <a href="/breweries" className="flex items-center">
                     <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Beertender</span>
                 </a>
@@ -30,8 +30,8 @@ const [navItems, setNavItems] = useState(initialState);
 		if (props.isLoggedIn) {
 			setNavItems(
 				initialState.concat(
-					<div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-						<div className="py-1" role="none">
+					<div className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300 flex flex-row fixed w-full">
+						<div className="py-1 flex flex-row" role="none">
                         <a href="/user-info" 
                         class="text-gray-700 block px-4 py-2 text-sm" 
                         role="menuitem" 
@@ -63,8 +63,8 @@ const [navItems, setNavItems] = useState(initialState);
 		} else {
 			setNavItems(
 				initialState.concat([
-					<div className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-						<div className="py-1" role="none">
+					<div className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300 fixed w-full">
+						<div className="py-1 flex flex-row" role="none">
                             <a href="/" 
                         class="text-gray-700 block px-4 py-2 text-sm" 
                         role="menuitem" 
@@ -96,7 +96,7 @@ const [navItems, setNavItems] = useState(initialState);
 
 
     return (
-        <nav className="container flex flex-wrap items-center justify-between mx-auto bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300">{navItems}</nav>
+        <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300 flex flex-row">{navItems}</nav>
     )
     }
 //     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300">
