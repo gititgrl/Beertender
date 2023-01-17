@@ -13,7 +13,7 @@ export default function SignUp(props) {
 		
 		function handleSubmit(event, formData) {
 			event.preventDefault();
-			signUp(formData)
+			signUp(formState)
 				.then((data) => {
 					localStorage.token = data.token;
 					localStorage.user_Id = data.user._id;

@@ -3,10 +3,10 @@ import axios from "axios"
 
 
 //API Request
-export async function getEndpoints() {
-  const { data } = await axios.get("https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries/")
-  return data
-}
+// export async function getEndpoints() {
+//   const { data } = await axios.get('https://brianiswu-open-brewery-db-v1.p.rapidapi.com/breweries/')
+//   return data
+// }
 export async function getABrewery(endpoint) {
   const { data } = await axios.get(endpoint)
   return data
@@ -14,7 +14,7 @@ export async function getABrewery(endpoint) {
 // sign up function
 export async function signUp(formData) {
     const { data } = await axios.post(
-      "users/signup",
+      "http://localhost:4000/users/signup",
       formData
     );
        
@@ -24,7 +24,7 @@ export async function signUp(formData) {
   //Log in to User Account
   export async function loginToAccount(formData) {
     const { data } = await axios.post(
-      "users/login",
+      "http://localhost:4000/users/login",
       formData
     );
     return data;
@@ -38,26 +38,26 @@ export async function updateUser(userId, formData) {
       },
     };
     const { data } = await axios.put(
-      `users/${userId}`,
+      `http://localhost:4000/users/${userId}`,
       formData,
       config
     );
     return data
   }
   
-  // delet user account
+  // delete user account
   export async function deleteUser(userId) {
     const config = {
       headers: {
         Authorization: localStorage.getItem("token"),
       },
     };
-    await axios.delete(`users/${userId}`, config);
+    await axios.delete(`http://localhost:4000/users/${userId}`, config);
   }
   
 //getUser
   export async function getUser(userid) {
-    const { data } = await axios.get(`users/${userid}`);
+    const { data } = await axios.get(`http://localhost:4000/users/${userid}`);
     return data;
 }
 
