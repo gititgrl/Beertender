@@ -1,5 +1,5 @@
 //import packages
-import { Routes, Route, Switch } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect } from "react"
 import axios from "axios";
 import './global_styles/style.css'
@@ -16,9 +16,10 @@ import Home from "./pages/Home/Home"
 //import components
 import Nav from "./components/Nav";
 import Main from "./components/Main"
+import { getUser } from './utils/api';
 
 function App() {
-  const [name, setName] = useState("")
+  // const [name, setName] = useState("")
   const [isLoggedIn, setLogInStatus] = useState(false);
 	const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(false); // Is the data loading?
@@ -26,6 +27,19 @@ function App() {
   const [breweries, setBreweries] = useState([]); // Array of breweries that will be set after fetching
   const [emptyResult, setEmptyResult] = useState(false); // Is the fetch result empty?
   
+  useEffect(() => {
+    if (localStorage.token) {
+      setLogInStatus(true);
+      try {getUser(localStorage.user_Id)
+    .then((foundUser) => {
+      setUser(foundUser.user);
+    })
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }, []);
+
   const getBreweries = () => {
     fetch(`https://api.openbrewerydb.org/breweries/search?query=${input}`)
         .then((response) => response.json())

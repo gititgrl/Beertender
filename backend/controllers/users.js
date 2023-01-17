@@ -15,8 +15,7 @@ function isAuthenticated(req, res, next){
 }
 //signup create route
 router.post('/signup', async (req, res) => {
-    console.log(req.body)
-    const foundUser = await db.User.findOne({ username: req.body.username})
+        const foundUser = await db.User.findOne({ username: req.body.username})
     if(!foundUser){
         const createdUser = await db.User.create(req.body)
         const payload = {id: createdUser._id}

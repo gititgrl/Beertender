@@ -4,12 +4,11 @@ import { useState, useEffect } from 'react';
 export default function Nav(props) {
     //logout handle
 	const handleLogout = () => {
-		props.setUser({});
+		props.setIsLoggedIn(false);
 		localStorage.clear();
 	};
 	// state declaration: build JSX array of NavBar items
-	const initialState = [
-    ];
+	const initialState = [];
 
 
 const [navItems, setNavItems] = useState(initialState);
@@ -27,10 +26,9 @@ const [navItems, setNavItems] = useState(initialState);
                         id="menu-item-0">
                             My Account
                         </a>
-                        <a href="/login" 
+                        <a href="/" 
                         className="text-gray-700 block px-4 py-2 text-sm" 
                         role="menuitem" 
-                         
                         id="menu-item-1"
                         onClick={() => {
 							props.setLogInStatus(false);
