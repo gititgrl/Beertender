@@ -52,10 +52,12 @@ export default function BreweryList(props){
             to={`/brewery/${brewery.id}`}
             >
               <button className='text-center'>
-                  <h3 className="text-2xl pt-4 text-center">{brewery.name}</h3>
-                  <p className='lead'>
-                      {brewery.city + ", " + brewery.state}
-                  </p>
+                    <h3 className="text-2xl pt-4 text-center">
+                        {brewery.name}
+                    </h3>
+                    <p className='lead'>
+                        {brewery.city + ", " + brewery.state}
+                    </p>
               </button>
           </Link>
     </div>
