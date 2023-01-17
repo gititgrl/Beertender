@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from 'react-router-dom'
 
 export default function BreweryList(props){
 
@@ -45,22 +46,19 @@ export default function BreweryList(props){
   })
   .map((brewery) => (
       <>
-          <li
-              className='list-item'
-              key={brewery.id}
-              data-toggle='modal'
-              data-target={"#detailsModal_" + brewery.id}
-          >
-              <div className='list-item-title'>
-                  <h3>{brewery.name}</h3>
-              </div>
-              <div className='list-item-title'>
+      <div>
+          <Link
+            key={brewery.id}
+            to={`/brewery/${brewery.id}`}
+            >
+              <button className='text-center'>
+                  <h3 className="text-2xl pt-4 text-center">{brewery.name}</h3>
                   <p className='lead'>
                       {brewery.city + ", " + brewery.state}
                   </p>
-              </div>
-          </li>
-    
+              </button>
+          </Link>
+    </div>
       </>
   ));
 
@@ -120,7 +118,8 @@ return (
                     </button>
             </div>
         </div>
-            <div className='flex items-center justify-center space-x-2'>
+            <div className='container mx-auto bg-blue-300'>
+                <div>
                 {/* While the data is loading */}
                 {loading && (
                 <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-blue-300" role="status">
@@ -134,6 +133,7 @@ return (
                 {emptyResult === true && (
                     <p className='lead text-center'>NO RESULTS</p>
                 )}
+            </div>
             </div>
     </div>
 )
