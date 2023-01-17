@@ -107,11 +107,18 @@ const breweriesArr = breweries
 						/>
 					}
 				/>
-      <Route
-        path='/breweries'
-        exact element={<BreweryList />}
-      />
-      
+        <Route
+          path='/user-info'
+          exact element={<User />}
+        />
+        <Route
+          path='/breweries'
+          exact element={<BreweryList />}
+        />
+        <Route
+          path='/brewery/:id'
+          exact element={<BreweryShow />}
+        />
       </Routes>
       
     </div>

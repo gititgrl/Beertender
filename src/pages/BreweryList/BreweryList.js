@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from 'react-router-dom'
-
+import './index.css'
 export default function BreweryList(props){
 
     const [loading, setLoading] = useState(false); // Is the data loading?
@@ -63,9 +63,12 @@ export default function BreweryList(props){
   ));
 
 return (
-    <div>
+    <div className="brewerylist">
+        <div className="pt-20">
+            <h1 className="font-righteous">Search for a brewery by Name, City, State or keyword below:</h1>
+        </div>
         <div className='search-bar-container'>
-            <div className='input-group mb-0 pt-20'>
+            <div className='input-group mb-0 pt-10'>
                 <input
                     type='text'
                     value={input}
@@ -118,23 +121,17 @@ return (
                     </button>
             </div>
         </div>
-            <div className='container mx-auto bg-blue-300'>
-                <div>
-                {/* While the data is loading */}
-                {loading && (
-                <div class="spinner-grow inline-block w-8 h-8 bg-current rounded-full opacity-0 text-blue-300" role="status">
-                    <span class="visually-hidden">Loading...</span>
-                </div>
-                    
-                )}
+            <div className='container mx-auto bg-blue-300 overflow-y-scroll'>
+                
                 {/* If there are results for the search query */}
-                <ul className='list'>{breweries && breweriesArr}</ul>
+                <ul>{breweries && breweriesArr}</ul>
                 {/* If there are no results for the search query  */}
                 {emptyResult === true && (
                     <p className='lead text-center'>NO RESULTS</p>
                 )}
             </div>
-            </div>
-    </div>
+            
+        </div>
+    
 )
 }

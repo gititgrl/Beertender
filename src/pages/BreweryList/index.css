@@ -1,0 +1,8 @@
+.brewerylist {
+    background-image: url('../../assets/brewlistBG.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    max-height: fit-content;
+       
+}
