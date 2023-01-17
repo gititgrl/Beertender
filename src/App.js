@@ -85,8 +85,10 @@ const breweriesArr = breweries
   return (
     <div>
       <Nav />
-      <Main />
       <Routes>
+        <Route path = '/' element={
+          <Main />
+        }/>
         <Route path ='/signup' element={
 						<SignUp 
             isLoggedIn={isLoggedIn} 

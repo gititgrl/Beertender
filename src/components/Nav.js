@@ -9,9 +9,9 @@ export default function Nav(props) {
 	};
 	// state declaration: build JSX array of NavBar items
 	const initialState = [
-		<div className='nav-item' key='1'>
-			<Link to='/'>
-            <div className="container flex flex-wrap items-center justify-between mx-auto fixed w-full">
+		<div className='container flex flex-wrap items-center justify-between mx-auto fixed w-full z-50'>
+			<Link to='/breweries'>
+            <div className="brewtender">
                 <a href="/breweries" className="flex items-center">
                     <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Beertender</span>
                 </a>
@@ -30,7 +30,7 @@ const [navItems, setNavItems] = useState(initialState);
 		if (props.isLoggedIn) {
 			setNavItems(
 				initialState.concat(
-					<div className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300 flex flex-row fixed w-full">
+					<div className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300 flex flex-row fixed w-full z-30">
 						<div className="py-1 flex flex-row" role="none">
                         <a href="/user-info" 
                         class="text-gray-700 block px-4 py-2 text-sm" 
@@ -63,7 +63,7 @@ const [navItems, setNavItems] = useState(initialState);
 		} else {
 			setNavItems(
 				initialState.concat([
-					<div className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300 fixed w-full">
+					<div className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300 fixed w-full z-30">
 						<div className="py-1 flex flex-row" role="none">
                             <a href="/" 
                         class="text-gray-700 block px-4 py-2 text-sm" 
@@ -96,7 +96,7 @@ const [navItems, setNavItems] = useState(initialState);
 
 
     return (
-        <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300 flex flex-row">{navItems}</nav>
+        <nav>{navItems}</nav>
     )
     }
 //     <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-blue-300">

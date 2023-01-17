@@ -1,7 +1,10 @@
 import React from 'react';
-import axios from 'axios';
+
 import "./home.css"
-import App from '../../App';
+import Main from '../../components/Main'
 export default function Home(props){
-   
-}
+    return (
+        <div className='main'>
+            < Main />
+        </div>
+)}
