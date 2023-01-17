@@ -67,14 +67,14 @@ export default function BreweryList(props){
 return (
     <div>
         <div className='search-bar-container'>
-            <div className='input-group mb-0'>
+            <div className='input-group mb-0 pt-20'>
                 <input
                     type='text'
                     value={input}
                     placeholder='Search breweries...'
                     aria-label='Search'
                     className=
-                        'form-control block w-full px-3 py-1.5
+                        'form-control block flex items-center w-1/2 mx-auto px-3 py-1.5
                         text-base
                        font-normal
                         text-gray-700

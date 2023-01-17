@@ -1,5 +1,5 @@
 //import packages
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Switch } from 'react-router-dom';
 import React, { useState, useEffect } from "react"
 import axios from "axios";
 import './global_styles/style.css'
@@ -9,8 +9,9 @@ import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
 import User from "./pages/User";
 import Favorites from "./pages/Favorites";
-import BreweryList from "./pages/BreweryList";
+import BreweryList from "./pages/BreweryList/BreweryList";
 import BreweryShow from "./pages/BreweryShow";
+import Home from "./pages/Home/Home"
 
 //import components
 import Nav from "./components/Nav";
@@ -78,18 +79,17 @@ const breweriesArr = breweries
                 </p>
             </div>
         </li>
-        {/* Show more details about the brewery (address, number, website) */}
-        {/* <Details brewery={brewery} /> */}
+        
     </>
 ));
   return (
     <div>
       <Nav />
       <Routes>
-        <Route path = '/' element={
+        <Route path = '/' exact element={
           <Main />
         }/>
-        <Route path ='/signup' element={
+        <Route path ='/signup' exact element={
 						<SignUp 
             isLoggedIn={isLoggedIn} 
             setLogInStatus={setLogInStatus} 
@@ -98,7 +98,7 @@ const breweriesArr = breweries
         
         <Route
 					path='/login'
-					element={
+					exact element={
 						<Login
 							isLoggedIn={isLoggedIn}
 							setLogInStatus={setLogInStatus}
@@ -109,7 +109,7 @@ const breweriesArr = breweries
 				/>
       <Route
         path='/breweries'
-        element={<BreweryList />}
+        exact element={<BreweryList />}
       />
       </Routes>
       
