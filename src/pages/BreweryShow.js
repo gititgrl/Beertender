@@ -1,8 +1,9 @@
 export default function BreweryShow(props){
+    
     const Info = ({ brewery }) => {
         const Address =
         brewery.street + brewery.city + brewery.state + brewery.postal_code;
-        console.log(Address)
+        
     
 
     return (

@@ -3,7 +3,8 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const path = require('path');
-const passport = require('./config/passport')
+const passport = require('passport')
+require ('./config/passport')
 require('./models')
 require('dotenv').config()
 
@@ -19,9 +20,10 @@ app.use(express.static(path.join(path.dirname(__dirname), "frontend", "build")))
 // cross origin allowance
 app.use(cors())
 // parse the body data
+app.use(passport.initialize())
 app.use(express.urlencoded({extended: true }))
 app.use(express.json())
-app.use(passport.initialize())
+
 //routes
 app.use('/users', userCtrl)
 app.use('/favorites', favCtrl)

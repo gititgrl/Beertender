@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Link } from 'react-router-dom'
+import BreweryShow from "../BreweryShow";
 import './index.css'
 export default function BreweryList(props){
 
@@ -50,6 +51,7 @@ export default function BreweryList(props){
           <Link
             key={brewery.id}
             to={`/brewery/${brewery.id}`}
+            
             >
               <button className='text-center'>
                     <h3 className="text-2xl pt-4 text-center">

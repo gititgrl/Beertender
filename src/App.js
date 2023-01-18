@@ -12,6 +12,7 @@ import Favorites from "./pages/Favorites";
 import BreweryList from "./pages/BreweryList/BreweryList";
 import BreweryShow from "./pages/BreweryShow";
 import Home from "./pages/Home/Home"
+import NotFound from './pages/NotFound';
 
 //import components
 import Nav from "./components/Nav";
@@ -132,6 +133,10 @@ const breweriesArr = breweries
         <Route
           path='/brewery/:id'
           exact element={<BreweryShow />}
+        />
+        <Route
+          path='*'
+          element={<NotFound />}
         />
       </Routes>
       

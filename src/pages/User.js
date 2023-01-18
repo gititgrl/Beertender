@@ -22,29 +22,29 @@ export default function User(prop) {
 
 	const handleSubmitUpdateUser = (event) => {
 		event.preventDefault();
-		updateUser(prop.user_Id, formState)
+		updateUser(prop.user_id, formState)
 		setShowForm(false);
 		navigate('/user-info');
 	};
 	// delete user function
 	const destroyUser = () => {
-		deleteUser(prop.user_Id);
+		deleteUser(prop.user_id);
 		localStorage.clear();
 		prop.setLogInStatus(false);
 		navigate('/');
 	};
 	
 
-	
-
 
 	return (
+	<div>
+		<div></div>
 	<div className="flex flex-col">
 		<div className='flex items-center justify-center h-screen'>
-			<div className='bg-red-300 shadow-md rounded px-10 pt-6 pb-8 mb-4'>
+			<div className='bg-red-300 hover:bg-red-200 shadow-md rounded px-10 pt-6 pb-8 mb-4'>
 				{!deletPopUp ? <button
 					id='edit-btn'
-					className='bg-red-300 hover:bg-red-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'
+					className='bg-red-300 hover:bg-red-200 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'
 					onClick={setDeletPopUp}>
 					<svg xmlns="http://www.w3.org/2000/svg" 
 					fill="none" viewBox="0 0 24 24" 
@@ -77,10 +77,10 @@ export default function User(prop) {
 			</div>
 
 			<div className='flex items-center justify-center h-screen'>
-				<div className='bg-yellow-200 shadow-md rounded px-10 pt-6 pb-8 mb-4'>
+				<div className='bg-yellow-200 hover:bg-yellow-100 shadow-md rounded px-10 pt-6 pb-8 mb-4'>
 					<button
 						id='edit-btn'
-						className='bg-yellow-200 hover:bg-yellow-300 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'
+						className='bg-yellow-200 hover:bg-yellow-100 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'
 						onClick={() => {
 							setShowForm(!showForm);
 						}}>
@@ -98,32 +98,34 @@ export default function User(prop) {
 					</button>
 				</div>
 				{showForm ? (
-					<div className='edit form'>
+					<div className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
 						<form onSubmit={handleSubmitUpdateUser} className="w-full max-w-lg">
-							<div className="flex flex-wrap -mx-3 mb-6">
+							<div className="flex flex-wrap mb-6">
 							<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
 							<label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' htmlFor='username'>
 								Username:
 							</label>
 							<input
-								className='form-control'
+								className='shadow appearance-none border rounded max-w- py-2 px-3 mb-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
 								id='username'
 								type='text'
 								onChange={handleChange}
-								value={formState.username}
+								
+								
 							/>
 
 							<label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' htmlFor='password'>
 								Password:
 							</label>
 							<input
-								className='appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500'
+								className='shadow appearance-none border rounded max-w py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
 								id='password'
 								type='text'
 								onChange={handleChange}
-								value={formState.password}
+								
+								
 							/>
-							<button className='btn btn-primary' type='submit'>
+							<button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-8 rounded focus:outline-none focus:shadow-outline' type='submit'>
 								Save Changes
 							</button>
 							</div>
@@ -136,5 +138,6 @@ export default function User(prop) {
 			
 		</div>
 	</div>
+</div>
 	);
 }

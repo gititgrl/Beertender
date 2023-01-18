@@ -14,9 +14,10 @@ export async function getABrewery(endpoint) {
 // sign up function
 export async function signUp(formData) {
     const { data } = await axios.post(
-      "http://localhost:4000/users/signup",
-      formData
-    );
+      "http://localhost:4000/users/signup", {
+      username: formData.username,
+      password: formData.password
+});
        
     return data;
   }
@@ -24,9 +25,10 @@ export async function signUp(formData) {
   //Log in to User Account
   export async function loginToAccount(formData) {
     const { data } = await axios.post(
-      "http://localhost:4000/users/login",
-      formData
-    );
+      "http://localhost:4000/users/login", {
+        username: formData.username,
+      password: formData.password
+      });
     return data;
   }
 
@@ -57,7 +59,7 @@ export async function updateUser(userId, formData) {
   
 //getUser
   export async function getUser(userid) {
-    const { data } = await axios.get(`http://localhost:4000/users/${userid}`);
+    const { data } = await axios.get('http://localhost:4000/users/' + userid);
     return data;
 }
 

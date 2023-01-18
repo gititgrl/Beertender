@@ -11,16 +11,16 @@ export default function SignUp(props) {
 	const handleChange = (event) => {
 		setFormState({ ...formState, [event.target.name]: event.target.value })};
 		
-		function handleSubmit(event, formData) {
-			event.preventDefault();
-			signUp(formState)
-				.then((data) => {
-					localStorage.token = data.token;
-					localStorage.user_Id = data.user._id;
-					props.setUser(data.user);
+	function handleSubmit(event, formData) {
+		event.preventDefault();
+		signUp(formState)
+			.then((data) => {
+				localStorage.token = data.token;
+				localStorage.user_Id = data.user._id;
+				props.setUser(data.user);
 			});
-			navigate('/login')
-		};
+		navigate('/login')
+	};
 
 		return (
 			<div className='flex items-center justify-center h-screen'>

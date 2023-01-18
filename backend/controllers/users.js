@@ -3,6 +3,7 @@ const router = express.Router()
 const db = require('../models')
 const jwt = require('jwt-simple')
 const config = require('../config/config')
+const passport = require('../config/passport')
 const User = db.User
 
 function isAuthenticated(req, res, next){
@@ -67,7 +68,6 @@ router.get('/', async (req, res) => {
 // show
 router.get('/:id', async (req, res)=> {
     const foundUser = await db.User.findById(req.params.id)
-    
     res.json({
         user: foundUser,
         
