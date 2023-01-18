@@ -59,7 +59,7 @@ export async function updateUser(userId, formData) {
   
 //getUser
   export async function getUser(userid) {
-    const { data } = await axios.get('http://localhost:4000/users/' + userid);
+    const { data } = await axios.get(`http://localhost:4000/users/${userid}`);
     return data;
 }
 

@@ -69,7 +69,7 @@ export default function BreweryList(props){
 return (
     <div className="brewerylist">
         <div className="pt-20">
-            <h1 className="font-righteous">Search for a brewery by Name, City, State or keyword below:</h1>
+            <h1 className="font-righteous text-2xl">Search for a brewery by Name, City, State or keyword below:</h1>
         </div>
         <div className='search-bar-container'>
             <div className='input-group mb-0 pt-10'>
@@ -79,8 +79,7 @@ return (
                     placeholder='Search breweries...'
                     aria-label='Search'
                     className=
-                        'form-control block flex items-center w-1/2 mx-auto px-3 py-1.5
-                        text-base
+                        'form-control block flex items-center w-1/2 mx-auto px-3 py-1 text-base
                        font-normal
                         text-gray-700
                         bg-white bg-clip-padding

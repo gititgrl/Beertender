@@ -17,7 +17,8 @@ export default function LogIn(props) {
         loginToAccount(formState)
             .then((data) => {
                 localStorage.token = data.token;
-                props.setLogInStatus(true)
+				localStorage.user_id = data.user._id;
+				props.setLogInStatus(true)
                 props.setUser(data.user)
             })
             navigate('/breweries')

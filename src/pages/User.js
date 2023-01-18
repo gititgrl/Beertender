@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
-import {updateUser} from "../utils/api";
-import {deleteUser} from "../utils/api";
+import { updateUser } from "../utils/api";
+import { deleteUser } from "../utils/api";
 import { useNavigate } from 'react-router-dom';
 
 
-export default function User(prop) {
+export default function User(props) {
 	const navigate = useNavigate();
 	// function to reveal edit form
 	const [showForm, setShowForm] = useState(false);
@@ -12,8 +12,9 @@ export default function User(prop) {
 	// edit form and changed states
 	const [formState, setFormState] = useState({ username: '', password: '' });
 	useEffect(() => {
-		setFormState(prop.user);
-	},[prop.user, showForm])
+		setFormState(props.user);
+		console.log(props)
+	},[showForm, props.user])
 	
 	
 	const handleChange = (event) => {
@@ -22,25 +23,26 @@ export default function User(prop) {
 
 	const handleSubmitUpdateUser = (event) => {
 		event.preventDefault();
-		updateUser(prop.user_id, formState)
+		updateUser(props.user._id, formState)
 		setShowForm(false);
 		navigate('/user-info');
 	};
 	// delete user function
 	const destroyUser = () => {
-		deleteUser(prop.user_id);
+		deleteUser(props.user._id);
 		localStorage.clear();
-		prop.setLogInStatus(false);
+		props.setLogInStatus(false);
 		navigate('/');
+		
 	};
 	
 
 
 	return (
+	<div className="block place-content-center">
+		<h2>Hello, {formState.username}! </h2>
 	<div>
-		<div></div>
-	<div className="flex flex-col">
-		<div className='flex items-center justify-center h-screen'>
+		<div className='place-content-center '>
 			<div className='bg-red-300 hover:bg-red-200 shadow-md rounded px-10 pt-6 pb-8 mb-4'>
 				{!deletPopUp ? <button
 					id='edit-btn'
@@ -110,7 +112,7 @@ export default function User(prop) {
 								id='username'
 								type='text'
 								onChange={handleChange}
-								
+								value={setFormState.username}
 								
 							/>
 
@@ -122,7 +124,7 @@ export default function User(prop) {
 								id='password'
 								type='text'
 								onChange={handleChange}
-								
+								value={setFormState.password}
 								
 							/>
 							<button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mt-8 rounded focus:outline-none focus:shadow-outline' type='submit'>
