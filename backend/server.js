@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const path = require('path');
+const passport = require('./config/passport')
 require('./models')
 require('dotenv').config()
 
@@ -20,6 +21,7 @@ app.use(cors())
 // parse the body data
 app.use(express.urlencoded({extended: true }))
 app.use(express.json())
+app.use(passport.initialize())
 //routes
 app.use('/users', userCtrl)
 app.use('/favorites', favCtrl)

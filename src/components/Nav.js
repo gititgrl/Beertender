@@ -18,8 +18,8 @@ const [navItems, setNavItems] = useState(initialState);
 		if (props.isLoggedIn) {
 			setNavItems(
 				initialState.concat(
-					<div className="absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
-						<div className="py-1 flex flex-row" role="none">
+					<div className="absolute right-9 z-50 mt-2 w-70 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
+						<div className="block px-2 py-2 flex flex-row items-center" role="none" key="1">
                         <a href="/user-info" 
                         className="text-gray-700 block px-4 py-2 text-sm" 
                         role="menuitem" 
@@ -27,7 +27,7 @@ const [navItems, setNavItems] = useState(initialState);
                             My Account
                         </a>
                         <a href="/" 
-                        className="text-gray-700 block px-4 py-2 text-sm" 
+                        className="text-gray-700 block px-4 py-2 text-sm" key="2"
                         role="menuitem" 
                         id="menu-item-1"
                         onClick={() => {
@@ -37,7 +37,7 @@ const [navItems, setNavItems] = useState(initialState);
                                 Logout
                         </a>
                         <a href="/breweries" 
-                        className="text-gray-700 block px-4 py-2 text-sm" 
+                        className="text-gray-700 block px-4 py-2 text-sm" key="3"
                         role="menuitem"  
                         id="menu-item-2">
                             Search
@@ -49,8 +49,8 @@ const [navItems, setNavItems] = useState(initialState);
 		} else {
 			setNavItems(
 				initialState.concat([
-					<div className="absolute right-0 z-50 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
-						<div className="py-1 flex flex-row" role="none">
+					<div className="absolute right-0 z-50 mt-2 w-70 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button">
+						<div className="block px-2 py-2 flex flex-row items-center" role="none" key="1">
                             <a href="/" 
                         className="text-gray-700 block px-4 py-2 text-sm" 
                         role="menuitem" 
@@ -58,13 +58,13 @@ const [navItems, setNavItems] = useState(initialState);
                             Home
                         </a>
                         <a href="/login" 
-                        className="text-gray-700 block px-4 py-2 text-sm" 
+                        className="text-gray-700 block px-4 py-2 text-sm" key="2"
                         role="menuitem"  
                         id="menu-item-2">
                             Login
                         </a>
                         <a href="/signup" 
-                        className="text-gray-700 block px-4 py-2 text-sm" 
+                        className="text-gray-700 block px-4 py-2 text-sm" key="3"
                         role="menuitem" 
                         id="menu-item-0">
                             Sign Up

@@ -26,19 +26,15 @@ function App() {
   const [input, setInput] = useState(""); // User input for brewery query
   const [breweries, setBreweries] = useState([]); // Array of breweries that will be set after fetching
   const [emptyResult, setEmptyResult] = useState(false); // Is the fetch result empty?
-  
+  const [username, setUsername] = useState('')
+  const [password, setPassword] =useState('')
   useEffect(() => {
     if (localStorage.token) {
       setLogInStatus(true);
-      try {getUser(localStorage.user_Id)
-    .then((foundUser) => {
-      setUser(foundUser.user);
-    })
-      } catch (error) {
-        console.log(error)
+      } else {
+        setLogInStatus(false)
       }
-    }
-  }, []);
+    }, []);
 
   const getBreweries = () => {
     fetch(`https://api.openbrewerydb.org/breweries/search?query=${input}`)
@@ -46,9 +42,9 @@ function App() {
         .then((data) => {
             setLoading(true);
             setTimeout(function () {
-                // If the response of the data array is empty
+                // If the response of the data array is empty show no results
                 if (data.length < 1) {
-                    setEmptyResult(true); // NO results for the query
+                    setEmptyResult(true);
                 }
                 setBreweries(data); // Set the breweries array from the response
                 setLoading(false); // Set the loading state back to false
@@ -98,7 +94,11 @@ const breweriesArr = breweries
 ));
   return (
     <div>
-      <Nav />
+      <Nav 
+        isLoggedIn={isLoggedIn}
+        setLogInStatus={setLogInStatus}
+        setUsername={setUsername}
+        setPassword={setPassword}/>
       <Routes>
         <Route path = '/' exact element={
           <Main />
@@ -140,3 +140,11 @@ const breweriesArr = breweries
 }
 
 export default App;
+
+
+// try {getUser(localStorage.user_Id)
+//   .then((foundUser) => {
+//     setUser(foundUser.user);
+//   })
+//     } catch (error) {
+//       console.log(error)

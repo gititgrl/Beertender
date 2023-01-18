@@ -51,10 +51,10 @@ router.get('/token', isAuthenticated, async (req, res) => {
     const token = req.headers.authorization
     const decoded = jwt.decode(token, config.jwtSecret)
     const foundUser = await db.User.findById(decoded.id)
-    const userComment = await db.Comment.find({ user: foundUser._id })
+    
     res.json({
         user: foundUser,
-        comment: userComment
+        
     })
 })
 
@@ -67,10 +67,10 @@ router.get('/', async (req, res) => {
 // show
 router.get('/:id', async (req, res)=> {
     const foundUser = await db.User.findById(req.params.id)
-    const userComment = await db.Comment.find({ user: foundUser._id })
+    
     res.json({
         user: foundUser,
-        comment: userComment
+        
     })
 })
 
@@ -88,7 +88,6 @@ router.put('/:id', isAuthenticated, async (req, res) => {
 
 //delete
 router.delete('/:id', isAuthenticated, async (req, res)=> {
-    await db.Comment.deleteMany({ user: req.params.id})
     await db.User.findByIdAndDelete(req.params.id)
     res.sendStatus(200)
 })
