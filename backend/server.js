@@ -32,7 +32,7 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(path.dirname(__dirname), "frontend", "build", "index.html"));
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
     console.log(`server listening on port 4000`)
 })
 
