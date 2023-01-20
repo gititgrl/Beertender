@@ -1,5 +1,5 @@
 // dependencies
-const express = require('../frontend/node_modules/@types/express')
+const express = require('express')
 const app = express()
 const cors = require('cors')
 const path = require('path');

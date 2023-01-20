@@ -1,4 +1,4 @@
-const express = require('../../frontend/node_modules/@types/express')
+const express = require('express')
 const router = express.Router()
 const db = require('../models')
 const jwt = require('jwt-simple')
