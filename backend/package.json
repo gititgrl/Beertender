@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd Beertender/ npm run build && cd ../backend/ && node server.js",
-    "frontend": "cd Beertender/ react-scripts start",
+    "start": "npm run build && cd ../backend/ && node server.js",
+    "frontend": "react-scripts start",
     "backend": "cd backend/ && nodemon server.js"
   },
   "keywords": [],
