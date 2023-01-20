@@ -1,5 +1,5 @@
 // dependencies
-const express = require('express')
+const express = require('../frontend/node_modules/@types/express')
 const app = express()
 const cors = require('cors')
 const path = require('path');
@@ -16,7 +16,7 @@ const favCtrl = require('./controllers/favorites')
 
 //middleware
 // use the React build folder for static files
-app.use(express.static(path.join(path.dirname(__dirname), "Beertender", "build")))
+app.use(express.static(path.join(path.dirname(__dirname), "frontend", "build")))
 // cross origin allowance
 app.use(cors())
 // parse the body data
@@ -29,7 +29,7 @@ app.use('/users', userCtrl)
 app.use('/favorites', favCtrl)
 // any other route not matching the routes above gets routed by React
 app.get("*", (req, res) => {
-    res.sendFile(path.join(path.dirname(__dirname), "Beertender", "public", "index.html"));
+    res.sendFile(path.join(path.dirname(__dirname), "frontend", "build", "index.html"));
 });
 
 app.listen(PORT, () => {
