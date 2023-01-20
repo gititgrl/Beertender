@@ -32,7 +32,8 @@ const [navItems, setNavItems] = useState([]);
                         id="menu-item-1"
                         onClick={() => {
 							props.setLogInStatus(false);
-							handleLogout();
+							localStorage.clear();
+                            props.setIsLoggedIn(false)
 							}}>
                                 Logout
                         </a>

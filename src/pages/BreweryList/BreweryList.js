@@ -47,12 +47,11 @@ export default function BreweryList(props){
   })
   .map((brewery) => (
       <>
-      <div>
-          <Link
-            key={brewery.id}
-            to={`/brewery/${brewery.id}`}
-            
-            >
+      <Link
+      key={brewery.id}
+      path= {<BreweryShow />}
+      to= {`/brewery/${brewery.id}`}>
+          
               <button className='text-center'>
                     <h3 className="text-2xl pt-4 text-center">
                         {brewery.name}
@@ -61,13 +60,13 @@ export default function BreweryList(props){
                         {brewery.city + ", " + brewery.state}
                     </p>
               </button>
-          </Link>
-    </div>
+          
+    </Link>
       </>
   ));
 
 return (
-    <div className="brewerylist">
+    <div className="brewerylist" key="brew">
         <div className="pt-20">
             <h1 className="font-righteous text-2xl">Search for a brewery by Name, City, State or keyword below:</h1>
         </div>
@@ -124,17 +123,18 @@ return (
                     </button>
             </div>
         </div>
-            <div className='container mx-auto bg-blue-300 overflow-y-scroll'>
-                
+        <div className='brewerydata'>
+            <div className='container md:mx-auto bg-blue-300 snap-y'>
                 {/* If there are results for the search query */}
-                <ul>{breweries && breweriesArr}</ul>
+                <ul className='snap-center'>{breweries && breweriesArr}</ul>
                 {/* If there are no results for the search query  */}
                 {emptyResult === true && (
-                    <p className='lead text-center'>NO RESULTS</p>
+                    <p className='pb-10'>NO RESULTS</p>
                 )}
             </div>
-            
+            </div>  
         </div>
     
 )
 }
+

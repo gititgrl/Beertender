@@ -39,11 +39,10 @@ export default function User(props) {
 
 
 	return (
-	<div className="block place-content-center">
-		<h2>Hello, {formState.username}! </h2>
-	<div>
-		<div className='place-content-center '>
-			<div className='bg-red-300 hover:bg-red-200 shadow-md rounded px-10 pt-6 pb-8 mb-4'>
+	
+		<div className='flex items-center flex-col justify-center h-screen shadow-md rounded px-20 pt-6 pb-8 mb-4'>
+		<h2 className='text-2xl font-righteous mb-4'>Hello, {formState.username}! </h2>
+			<div>
 				{!deletPopUp ? <button
 					id='edit-btn'
 					className='bg-red-300 hover:bg-red-200 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'
@@ -78,8 +77,8 @@ export default function User(props) {
 				) : null}
 			</div>
 
-			<div className='flex items-center justify-center h-screen'>
-				<div className='bg-yellow-200 hover:bg-yellow-100 shadow-md rounded px-10 pt-6 pb-8 mb-4'>
+			<div>
+				<div>
 					<button
 						id='edit-btn'
 						className='bg-yellow-200 hover:bg-yellow-100 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center'
@@ -102,8 +101,8 @@ export default function User(props) {
 				{showForm ? (
 					<div className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
 						<form onSubmit={handleSubmitUpdateUser} className="w-full max-w-lg">
-							<div className="flex flex-wrap mb-6">
-							<div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+							<div>
+							<div className="flex flex-col w-full px-3 mb-6 md:mb-0">
 							<label className='block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2' htmlFor='username'>
 								Username:
 							</label>
@@ -139,7 +138,7 @@ export default function User(props) {
 			</div>
 			
 		</div>
-	</div>
-</div>
+	
+
 	);
 }

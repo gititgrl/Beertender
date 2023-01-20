@@ -16,7 +16,7 @@ const favCtrl = require('./controllers/favorites')
 
 //middleware
 // use the React build folder for static files
-app.use(express.static(path.join(path.dirname(__dirname), "frontend", "build")))
+app.use(express.static(path.join(path.dirname(__dirname), "Beertender", "build")))
 // cross origin allowance
 app.use(cors())
 // parse the body data
@@ -28,9 +28,9 @@ app.use(express.json())
 app.use('/users', userCtrl)
 app.use('/favorites', favCtrl)
 // any other route not matching the routes above gets routed by React
-// app.get("*", (req, res) => {
-//     res.sendFile(path.join(path.dirname(__dirname), "public", "index.html"));
-// });
+app.get("*", (req, res) => {
+    res.sendFile(path.join(path.dirname(__dirname), "Beertender", "public", "index.html"));
+});
 
 app.listen(PORT, () => {
     console.log(`server listening on port 4000`)

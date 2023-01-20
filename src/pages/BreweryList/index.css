@@ -4,5 +4,14 @@
     background-repeat: no-repeat;
     height: 100vh;
     max-height: fit-content;
+    overflow:hidden;
+    
        
+}
+
+.brewerydata {
+    background-color: (0, 0, 0, 0.8);
+    overflow-y: scroll;
+    max-height: 70vh;
+    -webkit-overflow-scrolling: touch;
 }
