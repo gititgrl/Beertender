@@ -52,7 +52,7 @@ export default function BreweryList(props){
       path= {<BreweryShow />}
       to= {`/brewery/${brewery.id}`}>
           
-              <button className='flex flex-col text-center'>
+              <button className='text-center'>
                     <h3 className="text-2xl pt-4 text-center">
                         {brewery.name}
                     </h3>
