@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 export default function BreweryShow(props){
-    
+    const [brewery, setBrewery] = useState();
+
+    useEffect(() => {
+        fetch(`https://api.openbrewerydb.org/breweries/search?query=${input}`)
+          .then((response) => response.json())
+          .then((data) => {
+            setBrewery(data[0])
+            console.log(data[0])
+    })
+}, []);
     const Details = ({ brewery }) => {
         const breweryAddress =
             brewery.street +
