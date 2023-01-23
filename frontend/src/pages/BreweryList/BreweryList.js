@@ -127,7 +127,7 @@ return (
                     </button>
             </div>
         </div>
-        <div className='flex justify-center h-screen'>
+        <div className='brewery list'>
             <div className='container md:mx-auto bg-blue-300 snap-y'>
                 
                 <ul className='flex justify-center h-screen'>{breweries && breweriesArr}</ul>
