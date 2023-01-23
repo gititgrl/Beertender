@@ -8,7 +8,6 @@ import './global_styles/style.css'
 import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
 import User from "./pages/User";
-import Favorites from "./pages/Favorites";
 import BreweryList from "./pages/BreweryList/BreweryList";
 import BreweryShow from "./pages/BreweryShow";
 import NotFound from './pages/NotFound';
@@ -22,12 +21,7 @@ function App() {
   // const [name, setName] = useState("")
   const [isLoggedIn, setLogInStatus] = useState(false);
 	const [user, setUser] = useState([]);
-  const [loading, setLoading] = useState(false); // Is the data loading?
-  const [input, setInput] = useState(""); // User input for brewery query
-  const [breweries, setBreweries] = useState([]); // Array of breweries that will be set after fetching
-  const [emptyResult, setEmptyResult] = useState(false); // Is the fetch result empty?
-
-
+ 
   const refresh = useCallback(() => {
 		if (localStorage.token) {
       
@@ -105,9 +99,3 @@ function App() {
 export default App;
 
 
-// try {getUser(localStorage.user_Id)
-//   .then((foundUser) => {
-//     setUser(foundUser.user);
-//   })
-//     } catch (error) {
-//       console.log(error)

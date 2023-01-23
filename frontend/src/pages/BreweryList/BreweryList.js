@@ -4,10 +4,10 @@ import BreweryShow from "../BreweryShow";
 import './index.css'
 export default function BreweryList(props){
 
-    const [loading, setLoading] = useState(false); // Is the data loading?
-    const [input, setInput] = useState(""); // User input for brewery query
-    const [breweries, setBreweries] = useState([]); // Array of breweries that will be set after fetching
-    const [emptyResult, setEmptyResult] = useState(false); // Is the fetch result empty?
+    const [loading, setLoading] = useState(false); 
+    const [input, setInput] = useState(""); 
+    const [breweries, setBreweries] = useState([]); 
+    const [emptyResult, setEmptyResult] = useState(false); 
     
     const getBreweries = () => {
       fetch(`https://api.openbrewerydb.org/breweries/search?query=${input}`)
@@ -15,12 +15,12 @@ export default function BreweryList(props){
           .then((data) => {
               setLoading(true);
               setTimeout(function () {
-                  // If the response of the data array is empty
+                  
                   if (data.length < 1) {
-                      setEmptyResult(true); // NO results for the query
+                      setEmptyResult(true); 
                   }
-                  setBreweries(data); // Set the breweries array from the response
-                  setLoading(false); // Set the loading state back to false
+                  setBreweries(data); 
+                  setLoading(false); 
               }, 500);
           })
           .catch((error) => {
@@ -52,7 +52,7 @@ export default function BreweryList(props){
       path= {<BreweryShow />}
       to= {`/brewery/${brewery.id}`}>
           
-              <button className='text-center'>
+              <button className='flex flex-col text-center'>
                     <h3 className="text-2xl pt-4 text-center">
                         {brewery.name}
                     </h3>
@@ -87,7 +87,7 @@ return (
                         transition
                         ease-in-out
                         m-0'
-                        // focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none'
+                        
                     onChange={(e) => setInput(e.target.value)}/>
                     <button
                         className='bg-white 
@@ -125,9 +125,9 @@ return (
         </div>
         <div className='brewerydata'>
             <div className='container md:mx-auto bg-blue-300 snap-y'>
-                {/* If there are results for the search query */}
+                
                 <ul className='snap-center'>{breweries && breweriesArr}</ul>
-                {/* If there are no results for the search query  */}
+                
                 {emptyResult === true && (
                     <p className='pb-10'>NO RESULTS</p>
                 )}

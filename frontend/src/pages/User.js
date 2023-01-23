@@ -13,7 +13,7 @@ export default function User(props) {
 	const [formState, setFormState] = useState({ username: '', password: '' });
 	useEffect(() => {
 		setFormState(props.user);
-		console.log(props)
+		
 	},[showForm, props.user])
 	
 	
