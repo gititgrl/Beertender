@@ -1,10 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
 
 export default function BreweryShow(props){
     const [brewery, setBrewery] = useState();
+    const [id, setId] = useState("");
 
     useEffect(() => {
-        fetch(`https://api.openbrewerydb.org/breweries/search?query=${input}`)
+        fetch(`https://api.openbrewerydb.org/breweries/search?query=${id}`)
           .then((response) => response.json())
           .then((data) => {
             setBrewery(data[0])
