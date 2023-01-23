@@ -62,6 +62,7 @@ export default function BreweryList(props){
               </button>
           
     </Link>
+    <BreweryShow brewery={brewery} />
       </>
   ));
 

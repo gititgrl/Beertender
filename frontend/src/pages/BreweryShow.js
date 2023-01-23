@@ -14,9 +14,9 @@ export default function BreweryShow(props){
     
 
     return (
-        <div className="flex items-center justify-center h-screen"> 
-                <h1>Hello!</h1>
-                <h2>{Details}</h2>
+        <div className="flex flex-col items-center justify-center h-screen"> 
+                <h1 className="text-2xl font-righteous">{brewery.name}</h1>
+                <h2 className="text-lg">{breweryAddress}</h2>
         </div>
     )
 }
