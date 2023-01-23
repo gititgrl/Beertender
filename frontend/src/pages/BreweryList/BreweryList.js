@@ -48,9 +48,9 @@ export default function BreweryList(props){
   .map((brewery) => (
       <>
       <Link
-      key={brewery.id}
-      path= {<BreweryShow />}
-      to= {`/brewery/${brewery.id}`}>
+      key={brewery.website_url}
+      path= {brewery.website_url}
+      to= {brewery.website_url}>
           
               <button className='text-center'>
                     <h3 className="text-2xl pt-4 text-center">
