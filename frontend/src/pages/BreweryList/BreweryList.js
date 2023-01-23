@@ -125,7 +125,7 @@ return (
             </div>
         </div>
         <div className='brewerydata'>
-            <div className='flex place-items-center h-screen container md:mx-auto bg-blue-300 snap-y'>
+            <div className='flex justify-center h-screen container md:mx-auto bg-blue-300 snap-y'>
                 
                 <ul className='snap-centera'>{breweries && breweriesArr}</ul>
                 
