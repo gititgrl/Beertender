@@ -1,5 +1,5 @@
 # :beers:Beertender:beers:
-## Beertender is an app that allows you to search for local breweries by city, state, name or keyword.
+## Beertender is an app that allows you to search for local breweries by city, state, name or even just a keyword!
 ![Screen Shot 2023-01-23 at 8 58 04 AM](https://user-images.githubusercontent.com/112737174/214101887-342ecd6c-dd4e-4479-8029-79ea437d5207.png)
 ![Screen Shot 2023-01-23 at 8 59 12 AM](https://user-images.githubusercontent.com/112737174/214101938-777aa2ad-506a-48f0-90b5-3a06f6c28264.png)
 
