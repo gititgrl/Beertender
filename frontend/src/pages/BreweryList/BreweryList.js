@@ -52,7 +52,7 @@ export default function BreweryList(props){
       path= {<BreweryShow />}
       to= {`/brewery/${brewery.id}`}>
           
-              <button className='flex flex-col text-center justify-center'>
+              <button className='flex flex-col text-center'>
                     <h3 className="text-2xl pt-4 text-center">
                         {brewery.name}
                     </h3>
@@ -127,7 +127,7 @@ return (
                     </button>
             </div>
         </div>
-        <div className='flex justify-center h-screen'>
+        <div className='brewerydata'>
             <div className='container md:mx-auto bg-blue-300 snap-y'>
                 
                 <ul className='snap-center'>{breweries && breweriesArr}</ul>
