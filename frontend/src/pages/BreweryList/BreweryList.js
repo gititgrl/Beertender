@@ -130,7 +130,7 @@ return (
         <div className='flex justify-center h-screen'>
             <div className='container md:mx-auto bg-blue-300 snap-y'>
                 
-                <ul className='flex flex-col justify-center h-screen'>{breweries && breweriesArr}</ul>
+                <ul className='snap-center'>{breweries && breweriesArr}</ul>
                 
                 {emptyResult === true && (
                     <p className='pb-10'>NO RESULTS</p>
